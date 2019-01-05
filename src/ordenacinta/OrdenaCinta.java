@@ -328,13 +328,13 @@ public class OrdenaCinta {
     // Por la división del nº de peticiones y la longitud de los ficheros (Creciente)
     private static int[][] ordenaCintaDivisionCrec(int[] id, int[] l, int[] p){
         int[][] out = {new int[id.length], new int[l.length], new int[p.length]};
-        int[] c = new int[id.length];
+        double[] c = new double[id.length];
         int i, j;
         
-        //obtenemos el producto para la ordenacion respecto a él
-        for (i = 0; i<c.length; i++)    c[i] = p[i]/l[i];
+        //obtenemos el coeficiente para la ordenacion respecto a él
+        for (i = 0; i<c.length; i++)    c[i] = ((double) p[i])/((double) l[i]);
         
-        int aux;
+        int aux; double auxd;
         boolean ord = false;
         
         //ordenamos por burbuja respecto al array de cocientes c
@@ -358,9 +358,9 @@ public class OrdenaCinta {
                     p[j] = p[j+1];
                     p[j+1] = aux;
                     
-                    aux = c[j];
+                    auxd = c[j];
                     c[j] = c[j+1];
-                    c[j+1] = aux;
+                    c[j+1] = auxd;
                 }
             }
         }
@@ -373,13 +373,13 @@ public class OrdenaCinta {
     // Por la división del nº de peticiones y la longitud de los ficheros (Decreciente)
     private static int[][] ordenaCintaDivisionDecr(int[] id, int[] l, int[] p){
         int[][] out = {new int[id.length], new int[l.length], new int[p.length]};
-        int[] c = new int[id.length];
+        double[] c = new double[id.length];
         int i, j;
         
-        //obtenemos el producto para la ordenacion respecto a él
-        for (i = 0; i<c.length; i++)    c[i] = p[i]/l[i];
+        //obtenemos el coeficiente para la ordenacion respecto a él
+        for (i = 0; i<c.length; i++)    c[i] = ((double) p[i])/((double) l[i]);
         
-        int aux;
+        int aux; double auxd;
         boolean ord = false;
         
         //ordenamos por burbuja respecto al array de cocientes c
@@ -403,9 +403,9 @@ public class OrdenaCinta {
                     p[j] = p[j+1];
                     p[j+1] = aux;
                     
-                    aux = c[j];
+                    auxd = c[j];
                     c[j] = c[j+1];
-                    c[j+1] = aux;
+                    c[j+1] = auxd;
                 }
             }
         }
@@ -420,8 +420,8 @@ public class OrdenaCinta {
     public static void main(String[] args) {
         
         //Los aux son los que se modificarán durante la ejecución
-        //int[][] aux = generaCintaStandart();
-        int[][] aux = generaCinta(7, 1, 20, 1, 15);
+        int[][] aux = generaCintaStandart();
+        //int[][] aux = generaCinta(7, 1, 20, 1, 15);
         int[] id = aux[0];
         int[] idaux;
         int[] l = aux[1];
@@ -485,7 +485,7 @@ public class OrdenaCinta {
         laux = aux[1];
         paux = aux[2];
         
-        imprimeCinta(idaux, laux, paux, "Ordenado de menor a mayor por la Division de nº peticiones y longitud de los ficheros");
+        imprimeCinta(idaux, laux, paux, "Ordenado de menor a mayor por el cociente de la Division de nº peticiones por longitud de los ficheros");
 
         //Divisiones de nº de peticiones y longitud Decreciente
         aux = ordenaCintaDivisionDecr(id, l, p);
@@ -493,7 +493,7 @@ public class OrdenaCinta {
         laux = aux[1];
         paux = aux[2];
         
-        imprimeCinta(idaux, laux, paux, "Ordenado de mayor a menor por la Division de nº peticiones y longitud de los ficheros");
+        imprimeCinta(idaux, laux, paux, "Ordenado de mayor a menor por el cociente de la Division de nº peticiones por longitud de los ficheros");
     }
     
 }
